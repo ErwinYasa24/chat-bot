@@ -82,7 +82,7 @@ async def handle_connection(websocket: websockets.WebSocketServerProtocol) -> No
 
 async def main() -> None:
     print("WebSocket server starting", flush=True)
-    port = int(os.environ.get("PORT", 8090))
+    port = int(os.environ.get("PORT", 10000))
     async with websockets.serve(
         handle_connection,
         "0.0.0.0",
