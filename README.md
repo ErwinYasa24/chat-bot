@@ -73,6 +73,19 @@ Hosting di Netlify, Vercel, Cloudflare Pages, dsb.
   - Pada Netlify: menu *Site settings → Build & deploy → Environment*.
   - Pada Vercel: *Project settings → Environment Variables*.
 
+#### GitHub Pages
+
+1. Pastikan punya akses push ke repository GitHub ini.
+2. Set nilai `VITE_WS_ENDPOINT` terlebih dahulu (misalnya sementara `export VITE_WS_ENDPOINT=wss://your-backend.example.com`).
+3. Jalankan:
+   ```bash
+   npm install
+   npm run deploy:gpages
+   ```
+   Script ini membangun project menggunakan mode `gh-pages` (mengatur base path ke `/chat-bot/`) dan otomatis mem-push hasil build ke branch `gh-pages`.
+4. Di GitHub → tab **Settings → Pages**, pilih branch `gh-pages` dan folder `/ (root)`.
+5. Setelah beberapa menit, aplikasi dapat diakses di `https://<username>.github.io/chat-bot/`.
+
 Setelah deploy, buka aplikasi dan pastikan chat menerima balasan dari Gemini.
 
 ## Tips

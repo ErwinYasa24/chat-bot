@@ -7,18 +7,23 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 
 // https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [react()],
-  server: {
-    port: 8501,
-    watch: {
-      usePolling: false,
-      interval: 1000
+export default defineConfig(({ mode }) => {
+  const base = mode === 'gh-pages' ? '/chat-bot/' : '/';
+
+  return {
+    base,
+    plugins: [react()],
+    server: {
+      port: 8501,
+      watch: {
+        usePolling: false,
+        interval: 1000
+      }
+    },
+    resolve: {
+      alias: {
+        '@': resolve(__dirname, './src')
+      }
     }
-  },
-  resolve: {
-    alias: {
-      '@': resolve(__dirname, './src')
-    }
-  }
-})
+  };
+});
